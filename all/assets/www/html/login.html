@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+			<style type="text/css">
+			* {
+				margin: 0px;
+				font-family: 隶书;
+				font-size: 1.0rem;
+			}
+			
+			body {
+				width: 100%;
+				height: 100vh;
+				background-color: #E0EEEE;
+			}
+			
+			.header {
+				width: 100%;
+				height: 10%;
+				background-color: #B9D3EE;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.topview{
+			width: 100%;
+			height: 50%;
+	
+			}
+			.base {
+				width: 100%;
+				height: 80%;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;
+			}
+					
+		.loginview{
+			
+			width: 80%;
+			height: 40%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+							
+		}
+		.cell{
+			width: 80%;
+			height: 20%;
+			border: 1px  solid  #CDC9C9;
+			margin: 5px;			
+			display: flex;
+			justify-content: center;
+	        align-items: center;
+		}
+		.cell1{
+			width: 80%;
+			height: 20%;
+			margin: 5px;			
+			display: flex;
+			justify-content: center;
+	        align-items: center;
+		}
+		.cell2{
+			width: 80%;
+			height:100%;
+			margin: 5px;			
+			display: flex;
+			justify-content: center;
+	        align-items: center;
+	        
+		}
+		
+		input{
+			text-align: center;
+			width:100%;
+			height:100%;
+		}
+		
+			.footer {
+				width: 100%;
+				height: 10%;
+				background-color: #B9D3EE;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+             中美合拍_文体两开花
+		</div>
+		<div class="base">
+		 <div class="topview">
+		 	<img  src="../img/a3.jpg"  width="100%"  height="100%"/>
+		 </div>
+	     <div class="loginview">
+	     	<div  class="cell">
+	     		<input  type="text"  id="username"  placeholder="请输入用户姓名:" />
+	     	</div>
+	     	<div class="cell">
+	     		<input  type="password"  id="userpwd"  placeholder="请输入用户密码:" />
+	     	</div>
+	     	<div class="cell1">
+	     			<input class="cell2" type="button"  value="用户登录"  id="userlogin"/>
+	     			<input class="cell2" type="button"  value="用户注册"  id="userzhuce"/>
+	     	</div>
+	     </div>
+
+		</div>
+		<div class="footer">
+               章口就莱_新西游记
+		</div>
+	</body>
+	<script type="text/javascript">
+	
+	   var  loginbtn=document.getElementById("userlogin");
+	   
+	   loginbtn.onclick=function()
+	   {
+		  alert("按钮被点击");
+		   var  nameObj= document.getElementById("username");
+		   var  pwdObj= document.getElementById("userpwd");
+		   
+		   alert(nameObj.value+","+pwdObj.value);
+		   
+		   //带有请求的参数  FormData
+		   var formdatas=new FormData();
+		   formdatas.append("action","login");
+		   formdatas.append("username",nameObj.value);
+		   formdatas.append("userpwd",pwdObj.value);
+		   
+		   var  options={method:"post",body:formdatas};
+		   
+		   //新一代ajax技术fetch
+		   
+		   fetch("http://6j9t2d.natappfree.cc/user",options).then(function(response){
+			   
+			   if(response.status==200)
+			   {
+				   alert("连接成功");
+				   
+				   //接受参数
+				   response.json().then(function(data){
+					   
+					   alert(data.msg);
+					   alert(data.contentdata);
+					   alert(typeof data.contentdata);
+					   
+					   var jsondata=data.contentdata;
+					   if(data.msg=="success")
+					   {
+						   //encodeURL设置编码的函数
+						   window.location.href="./index.html?params="+encodeURI(JSON.stringify(jsondata));
+					   }
+					   else
+					   {
+						   
+					   }
+				   });
+			   }
+			   
+			   
+		   }).catch(function(error){
+			   
+			   alert("连接异常"+error);
+		   });
+		   
+		   //alert("end");
+		   
+	   }
+	
+
+	
+	</script>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0px;
+				font-family: 隶书;
+				font-size:1.0rem;
+			}
+			
+			body {
+				width: 100%;
+				height: 100vh;
+				background-color: #B0E0E6;
+			}
+			
+			.header {
+				width: 100%;
+				height: 10%;
+				background-color: #F0FFF0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			
+			.base {
+				width: 100%;
+				height: 70%;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;
+			}
+			.img
+			{width:100%;
+			height:20%;			
+			}
+			.cell1
+			{width:100%;
+			 height:30px;
+			 border:1px solid #7FFFD4;
+			 display: flex;
+			 flex-direction: row;
+			 justify-content: center;
+			 align-items: center;
+			}
+			
+			.cell{
+			    width: 90px;
+				height: 90px;
+				border: 2px  solid  #7FFFD4;
+				margin: 5px;
+				border-radius: 5px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			.imgview
+			{
+			width:100%;
+			height:90%;
+			}
+			.footer {
+				width: 100%;
+				height: 10%;
+				background-color: #F0FFF0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="header">
+             中美合拍_文体两开花
+		</div>
+		<div class="base">
+		   <div class="img">
+		 	<img  src="../img/a3.jpg"  width="100%"  height="100%"/>
+		   </div>
+		   <div class="cell1">
+		     风来！雨来！
+		   </div>
+		</div>
+		<div class="footer">
+          章口就莱_新西游记
+		</div>
+		<div class="bottom">
+		   <div class="cell2">
+		   		      
+		   </div>
+		   <div class="cell2">
+		   </div>
+		   <div class="cell2">
+		   </div>
+		   <div class="cell2">
+		   </div>
+		   <div class="cell2">
+		   </div>
+		</div>
+	</body>
+<script type="text/javascript">
+ var baseObj = document.getElementsByClassName("base")[0];
+ function UrlSearch()
+ {
+	 //decodeURI  location.search-->?之后的参数
+	 var url = decodeURI(location.search);
+	 //alert(url);
+	 
+	 var str=url.substr(url.indexOf("=")+1);
+	 //alert(str);
+	 //字符串转换成json
+	 var datas=JSON.parse(str);
+	 
+	 //alert(datas.length);
+	 
+	 datas.forEach(function(value,index){
+		 //alter(value["tname"]);
+		 var divObj = document.createElement("div");
+		 divObj.className="cell";
+		 divObj.setAttribute("onclick","forward('"+value["turl"]+"')")
+		 divObj.innerText=value["tname"];
+		 baseObj.appendChild(divObj);
+		 //alert(value["imgpath"]);
+		 var imgObj=document.createElement("img");
+		 imgObj.className="imgview";
+		 imgObj.setAttribute("src",value["imgpath"]);
+		 divObj.appendChild(imgObj);
+	 })
+ }
+ UrlSearch();
+ function  forward(id)
+ {
+	 window.location.href=id;
+ }
+
+</script>
+</html>

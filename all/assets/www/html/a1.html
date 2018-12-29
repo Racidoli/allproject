@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+			<style type="text/css">
+			* {
+				margin: 0px;
+				font-family: 楷体;
+				font-size: 1.0rem;
+			}
+			
+			body {
+				width: 100%;
+				height: 100vh;
+				background-color: #DCDCDC;
+			}
+			
+			.header {
+				width: 100%;
+				height: 12%;
+				background-color: aquamarine;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.base {
+				width: 100%;
+				height: 80%;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;
+			}
+			.topview{
+				width: 80%;
+			height: 15%;
+	
+			}
+		
+		.loginview{
+			
+			width: 50%;
+			height: 40%;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+							
+		}
+		.cell{
+			width: 80%;
+			height: 30%;
+			border: 1px  solid  #00FFFF;
+			margin: 5px;
+			
+			display: flex;
+				justify-content: center;
+							align-items: center;
+		}
+		input{
+			text-align: center;
+			width:100%;
+			height:100%;
+		}
+		
+			.footer {
+				width: 100%;
+				height: 8%;
+				background-color: aquamarine;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+             中美合拍_文体两开花
+		</div>
+		<div class="base">
+		  吃俺老孙一棒！！！！！！！！
+
+		</div>
+		<div class="footer">
+             章口就莱_新西游记
+		</div>
+	</body>
+<script src="https://gw.alipayobjects.com/os/antv/assets/f2/3.3.0/f2.min.js"></script>
+<script type="text/javascript">
+alert("请求业务报表")
+    var formData=new ForData();
+    formData.append("datas","classestostucount");
+    
+    var options={method:'poot',body:formData};
+    
+    fetch("http://6j9t2d.natappfree.cc/antv",options).then(function(response){
+    	if(response.status==200)
+    		{
+    		response.json().then(function(datas){
+    			alert(datas.jsonDatas);
+    			createView(datas.jsonDatas);
+    		});
+    		}
+    }).catch(function(error){
+    	
+    });
+    function  createView(data)
+    {
+    	var chart = new F2.Chart({
+    		id:'mountNode',
+    		pixIRatio:window.devicePixeIRotio
+    	});
+    	chart.source(data,{
+    		sales:{
+    			tickCount:2
+    		}
+    	});
+    	chart.interval().position('name*count');
+    	chart.render();
+    }
+ 
+</script>
+
+</html>
